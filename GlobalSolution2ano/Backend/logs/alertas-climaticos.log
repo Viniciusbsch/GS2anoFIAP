@@ -1,0 +1,1251 @@
+2025-06-01 15:08:00.553 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:08:00.610 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:08:00.631 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:08:00.793 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.internal.MetadataBuilderImpl$MetadataBuildingOptionsImpl.<init>(MetadataBuilderImpl.java:705)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.<init>(MetadataBuilderImpl.java:139)
+	at org.hibernate.boot.MetadataSources.getMetadataBuilder(MetadataSources.java:164)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:860)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:205)
+	at com.gs.Main.menuAreasRisco(Main.java:83)
+	at com.gs.Main.processarOpcao(Main.java:56)
+	at com.gs.Main.main(Main.java:24)
+Caused by: org.hibernate.boot.registry.selector.spi.StrategySelectionException: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:154)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:236)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.resolveRegionFactory(RegionFactoryInitiator.java:96)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:47)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:32)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	... 13 common frames omitted
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [org.hibernate.cache.ehcache.EhCacheRegionFactory]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:126)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:150)
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : org.hibernate.cache.ehcache.EhCacheRegionFactory
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:216)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:123)
+	... 21 common frames omitted
+Caused by: java.lang.Throwable: null
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:209)
+	... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+2025-06-01 15:08:47.272 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:08:47.326 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:08:47.345 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:08:47.512 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.internal.MetadataBuilderImpl$MetadataBuildingOptionsImpl.<init>(MetadataBuilderImpl.java:705)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.<init>(MetadataBuilderImpl.java:139)
+	at org.hibernate.boot.MetadataSources.getMetadataBuilder(MetadataSources.java:164)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:860)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.consultarAreasPorRisco(Main.java:450)
+	at com.gs.Main.menuConsultas(Main.java:191)
+	at com.gs.Main.processarOpcao(Main.java:60)
+	at com.gs.Main.main(Main.java:24)
+Caused by: org.hibernate.boot.registry.selector.spi.StrategySelectionException: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:154)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:236)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.resolveRegionFactory(RegionFactoryInitiator.java:96)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:47)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:32)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	... 13 common frames omitted
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [org.hibernate.cache.ehcache.EhCacheRegionFactory]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:126)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:150)
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : org.hibernate.cache.ehcache.EhCacheRegionFactory
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:216)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:123)
+	... 21 common frames omitted
+Caused by: java.lang.Throwable: null
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:209)
+	... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 27 common frames omitted
+2025-06-01 15:13:38.132 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:13:38.185 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-06-01 15:13:38.204 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:13:38.366 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.cache.spi.RegionFactory] due to: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.internal.MetadataBuilderImpl$MetadataBuildingOptionsImpl.<init>(MetadataBuilderImpl.java:705)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.<init>(MetadataBuilderImpl.java:139)
+	at org.hibernate.boot.MetadataSources.getMetadataBuilder(MetadataSources.java:164)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:860)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:293)
+	at com.gs.Main.menuAreasRisco(Main.java:85)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+Caused by: org.hibernate.boot.registry.selector.spi.StrategySelectionException: Unable to resolve name [org.hibernate.cache.ehcache.EhCacheRegionFactory] as strategy [org.hibernate.cache.spi.RegionFactory]
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:154)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:236)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.resolveStrategy(StrategySelectorImpl.java:189)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.resolveRegionFactory(RegionFactoryInitiator.java:96)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:47)
+	at org.hibernate.cache.internal.RegionFactoryInitiator.initiateService(RegionFactoryInitiator.java:32)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	... 13 common frames omitted
+Caused by: org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [org.hibernate.cache.ehcache.EhCacheRegionFactory]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:126)
+	at org.hibernate.boot.registry.selector.internal.StrategySelectorImpl.selectStrategyImplementor(StrategySelectorImpl.java:150)
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : org.hibernate.cache.ehcache.EhCacheRegionFactory
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:216)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:557)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:543)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:123)
+	... 21 common frames omitted
+Caused by: java.lang.Throwable: null
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:209)
+	... 26 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 26 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 26 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.hibernate.cache.ehcache.EhCacheRegionFactory
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 26 common frames omitted
+2025-06-01 15:15:12.998 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:15:13.050 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-06-01 15:15:13.070 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:15:13.228 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:15:13.328 [main] WARN  o.h.e.j.c.i.ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+2025-06-01 15:15:13.331 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:15:13.459 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:15:13.459 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:15:13.460 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=rm552776, password=****}
+2025-06-01 15:15:13.460 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:15:13.463 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 10 (min=1)
+2025-06-01 15:15:14.205 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-01 15:15:14.468 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:15:14.479 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: scale has no meaning for SQL floating point types
+java.lang.IllegalArgumentException: scale has no meaning for SQL floating point types
+	at org.hibernate.dialect.Dialect$SizeStrategyImpl.resolveSize(Dialect.java:5060)
+	at org.hibernate.mapping.Column.calculateColumnSize(Column.java:435)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:356)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:335)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$4(InFlightMetadataCollectorImpl.java:1800)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1773)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1751)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1799)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1785)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:910)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:293)
+	at com.gs.Main.menuAreasRisco(Main.java:85)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:16:55.017 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:16:55.108 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version [WORKING]
+2025-06-01 15:16:55.130 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:16:55.362 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:16:55.520 [main] WARN  o.h.e.j.c.i.ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+2025-06-01 15:16:55.523 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:16:55.642 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:16:55.642 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:16:55.643 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=rm552776, password=****}
+2025-06-01 15:16:55.643 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:16:55.645 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 10 (min=1)
+2025-06-01 15:16:56.158 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-01 15:16:56.396 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:16:56.411 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: scale has no meaning for SQL floating point types
+java.lang.IllegalArgumentException: scale has no meaning for SQL floating point types
+	at org.hibernate.dialect.Dialect$SizeStrategyImpl.resolveSize(Dialect.java:5060)
+	at org.hibernate.mapping.Column.calculateColumnSize(Column.java:435)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:356)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:335)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$4(InFlightMetadataCollectorImpl.java:1800)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1773)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1751)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1799)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1785)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:910)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:293)
+	at com.gs.Main.menuAreasRisco(Main.java:85)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:20:47.751 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:20:47.840 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:20:47.879 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:20:48.050 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:20:48.142 [main] WARN  o.h.e.j.c.i.ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+2025-06-01 15:20:48.145 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:20:48.260 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:20:48.261 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:20:48.261 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=rm552776}
+2025-06-01 15:20:48.261 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:20:48.263 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 10 (min=1)
+2025-06-01 15:20:48.815 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-01 15:20:49.074 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:20:49.085 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: scale has no meaning for SQL floating point types
+java.lang.IllegalArgumentException: scale has no meaning for SQL floating point types
+	at org.hibernate.dialect.Dialect$SizeStrategyImpl.resolveSize(Dialect.java:5060)
+	at org.hibernate.mapping.Column.calculateColumnSize(Column.java:435)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:356)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:335)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$4(InFlightMetadataCollectorImpl.java:1800)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1765)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1743)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1799)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1785)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:910)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarUsuario(Main.java:401)
+	at com.gs.Main.menuUsuarios(Main.java:139)
+	at com.gs.Main.processarOpcao(Main.java:59)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:23:31.395 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:23:31.454 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:23:31.474 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:23:31.635 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:23:31.725 [main] WARN  o.h.e.j.c.i.ConnectionProviderInitiator - HHH000022: c3p0 properties were encountered, but the c3p0 provider class was not found on the classpath; these properties are going to be ignored.
+2025-06-01 15:23:31.729 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:23:31.842 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:23:31.843 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:23:31.843 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=rm552776}
+2025-06-01 15:23:31.843 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:23:31.845 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 10 (min=1)
+2025-06-01 15:23:32.327 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-06-01 15:23:32.566 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:23:32.584 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: scale has no meaning for SQL floating point types
+java.lang.IllegalArgumentException: scale has no meaning for SQL floating point types
+	at org.hibernate.dialect.Dialect$SizeStrategyImpl.resolveSize(Dialect.java:5060)
+	at org.hibernate.mapping.Column.calculateColumnSize(Column.java:435)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:356)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:335)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$4(InFlightMetadataCollectorImpl.java:1800)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1765)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1743)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1799)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1785)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:910)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.popularDadosIniciais(Main.java:206)
+	at com.gs.Main.processarOpcao(Main.java:62)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:29:06.960 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:29:07.013 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:29:07.034 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:29:07.192 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:29:07.281 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:29:07.392 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:29:07.392 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:29:07.393 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=rm552776}
+2025-06-01 15:29:07.393 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:29:07.394 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-01 15:29:08.183 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:29:08.194 [main] ERROR com.gs.util.HibernateUtil - Erro ao criar SessionFactory: scale has no meaning for SQL floating point types
+java.lang.IllegalArgumentException: scale has no meaning for SQL floating point types
+	at org.hibernate.dialect.Dialect$SizeStrategyImpl.resolveSize(Dialect.java:5060)
+	at org.hibernate.mapping.Column.calculateColumnSize(Column.java:435)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:356)
+	at org.hibernate.mapping.BasicValue.resolve(BasicValue.java:335)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.lambda$processValueResolvers$4(InFlightMetadataCollectorImpl.java:1800)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1765)
+	at java.base/java.util.ArrayList.removeIf(ArrayList.java:1743)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processValueResolvers(InFlightMetadataCollectorImpl.java:1799)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1785)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:910)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:960)
+	at com.gs.util.HibernateUtil.buildSessionFactory(HibernateUtil.java:28)
+	at com.gs.util.HibernateUtil.getSessionFactory(HibernateUtil.java:40)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:293)
+	at com.gs.Main.menuAreasRisco(Main.java:85)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:30:23.632 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 15:30:23.687 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 15:30:23.709 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 15:30:23.866 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 15:30:23.959 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 15:30:24.069 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 15:30:24.069 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 15:30:24.069 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=rm552776}
+2025-06-01 15:30:24.070 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 15:30:24.071 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-01 15:30:24.991 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-01 15:30:25.537 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-01 15:30:25.557 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c4714ef] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-01 15:30:32.807 [main] DEBUG org.hibernate.SQL - 
+    alter table ALERTA 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:32.877 [main] DEBUG org.hibernate.SQL - 
+    alter table ALERTA 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:32.930 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_RISCO 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:32.957 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_RISCO 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:32.980 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_RISCO 
+       modify latitude float(53)
+2025-06-01 15:30:33.004 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_RISCO 
+       modify longitude float(53)
+2025-06-01 15:30:33.023 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_TIPO_EVENTO 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:33.050 [main] DEBUG org.hibernate.SQL - 
+    alter table AREA_TIPO_EVENTO 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:33.067 [main] DEBUG org.hibernate.SQL - 
+    alter table AUDITORIA_ALERTA 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:33.094 [main] DEBUG org.hibernate.SQL - 
+    alter table TIPO_EVENTO 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:33.118 [main] DEBUG org.hibernate.SQL - 
+    alter table TIPO_EVENTO 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:33.150 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:33.177 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:33.194 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO 
+       modify latitude float(53)
+2025-06-01 15:30:33.211 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO 
+       modify longitude float(53)
+2025-06-01 15:30:33.229 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO_AREA 
+       add data_atualizacao timestamp(6)
+2025-06-01 15:30:33.254 [main] DEBUG org.hibernate.SQL - 
+    alter table USUARIO_AREA 
+       add data_criacao timestamp(6)
+2025-06-01 15:30:42.477 [main] INFO  com.gs.util.HibernateUtil - SessionFactory criada com sucesso!
+2025-06-01 15:32:07.073 [main] ERROR com.gs.Main - Erro ao cadastrar área: For input string: "-402248+"
+java.lang.NumberFormatException: For input string: "-402248+"
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at com.gs.Main.cadastrarAreaRisco(Main.java:307)
+	at com.gs.Main.menuAreasRisco(Main.java:85)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:33:30.346 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_area_risco.nextval 
+    from
+        dual
+2025-06-01 15:33:30.381 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        AREA_RISCO
+        (data_atualizacao, data_criacao, historico_alteracoes, latitude, longitude, nivel_risco, nome, id_area) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:33:53.594 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:34:11.867 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:34:20.056 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0 
+    where
+        ar1_0.id_area=?
+2025-06-01 15:34:28.954 [main] ERROR com.gs.Main - Erro ao atualizar área: empty String
+java.lang.NumberFormatException: empty String
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1842)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at com.gs.Main.atualizarAreaRisco(Main.java:653)
+	at com.gs.Main.menuAreasRisco(Main.java:87)
+	at com.gs.Main.processarOpcao(Main.java:57)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:34:36.471 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:34:45.029 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0 
+    where
+        ar1_0.id_area=?
+2025-06-01 15:35:05.106 [main] DEBUG org.hibernate.SQL - 
+    update
+        AREA_RISCO 
+    set
+        data_atualizacao=?,
+        historico_alteracoes=?,
+        latitude=?,
+        longitude=?,
+        nivel_risco=?,
+        nome=? 
+    where
+        id_area=?
+2025-06-01 15:35:15.410 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:35:21.112 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0 
+    where
+        ar1_0.id_area=?
+2025-06-01 15:35:21.139 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.id_area,
+        a1_0.id_alerta,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao,
+        a1_0.data_hora,
+        a1_0.descricao,
+        a1_0.orientacao_populacao,
+        a1_0.severidade,
+        a1_0.status,
+        a1_0.cod_tipo,
+        te1_0.cod_tipo,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao,
+        te1_0.descricao 
+    from
+        ALERTA a1_0 
+    left join
+        TIPO_EVENTO te1_0 
+            on te1_0.cod_tipo=a1_0.cod_tipo 
+    where
+        a1_0.id_area=?
+2025-06-01 15:35:21.196 [main] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id_area,
+        te1_0.cod_tipo,
+        te2_0.cod_tipo,
+        te2_0.data_atualizacao,
+        te2_0.data_criacao,
+        te2_0.descricao,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao 
+    from
+        AREA_TIPO_EVENTO te1_0 
+    join
+        TIPO_EVENTO te2_0 
+            on te2_0.cod_tipo=te1_0.cod_tipo 
+    where
+        te1_0.id_area=?
+2025-06-01 15:35:21.226 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_area,
+        u1_0.id_usuario,
+        u2_0.id_usuario,
+        u2_0.data_atualizacao,
+        u2_0.data_criacao,
+        u2_0.email,
+        u2_0.latitude,
+        u2_0.longitude,
+        u2_0.nome,
+        u2_0.notif_email,
+        u2_0.notif_sms,
+        u2_0.telefone,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao 
+    from
+        USUARIO_AREA u1_0 
+    join
+        USUARIO u2_0 
+            on u2_0.id_usuario=u1_0.id_usuario 
+    where
+        u1_0.id_area=?
+2025-06-01 15:35:21.262 [main] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        AREA_RISCO 
+    where
+        id_area=?
+2025-06-01 15:35:55.513 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:36:03.698 [main] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.cod_tipo,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao,
+        te1_0.descricao 
+    from
+        TIPO_EVENTO te1_0
+2025-06-01 15:36:15.852 [main] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.cod_tipo,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao,
+        te1_0.descricao 
+    from
+        TIPO_EVENTO te1_0
+2025-06-01 15:36:19.273 [main] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.cod_tipo,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao,
+        te1_0.descricao 
+    from
+        TIPO_EVENTO te1_0 
+    where
+        te1_0.cod_tipo=?
+2025-06-01 15:36:19.291 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.cod_tipo,
+        a1_0.id_alerta,
+        a1_0.id_area,
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao,
+        a1_0.data_hora,
+        a1_0.descricao,
+        a1_0.orientacao_populacao,
+        a1_0.severidade,
+        a1_0.status 
+    from
+        ALERTA a1_0 
+    left join
+        AREA_RISCO ar1_0 
+            on ar1_0.id_area=a1_0.id_area 
+    where
+        a1_0.cod_tipo=?
+2025-06-01 15:36:19.343 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.cod_tipo,
+        a1_0.id_area,
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao 
+    from
+        AREA_TIPO_EVENTO a1_0 
+    join
+        AREA_RISCO ar1_0 
+            on ar1_0.id_area=a1_0.id_area 
+    where
+        a1_0.cod_tipo=?
+2025-06-01 15:36:19.448 [main] DEBUG org.hibernate.SQL - 
+    delete 
+    from
+        TIPO_EVENTO 
+    where
+        cod_tipo=?
+2025-06-01 15:37:08.201 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_usuario.nextval 
+    from
+        dual
+2025-06-01 15:37:08.220 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        USUARIO
+        (data_atualizacao, data_criacao, email, latitude, longitude, nome, notif_email, notif_sms, telefone, id_usuario) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:37:14.305 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0
+2025-06-01 15:37:18.823 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0
+2025-06-01 15:37:24.215 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0 
+    where
+        u1_0.id_usuario=?
+2025-06-01 15:38:04.719 [main] DEBUG org.hibernate.SQL - 
+    update
+        USUARIO 
+    set
+        data_atualizacao=?,
+        email=?,
+        latitude=?,
+        longitude=?,
+        nome=?,
+        notif_email=?,
+        notif_sms=?,
+        telefone=? 
+    where
+        id_usuario=?
+2025-06-01 15:38:09.178 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0
+2025-06-01 15:38:22.306 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:38:28.304 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0 
+    where
+        u1_0.id_usuario=?
+2025-06-01 15:38:28.314 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0 
+    where
+        ar1_0.id_area=?
+2025-06-01 15:38:28.330 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.id_usuario,
+        a1_0.id_area,
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao 
+    from
+        USUARIO_AREA a1_0 
+    join
+        AREA_RISCO ar1_0 
+            on ar1_0.id_area=a1_0.id_area 
+    where
+        a1_0.id_usuario=?
+2025-06-01 15:38:28.356 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_area,
+        u1_0.id_usuario,
+        u2_0.id_usuario,
+        u2_0.data_atualizacao,
+        u2_0.data_criacao,
+        u2_0.email,
+        u2_0.latitude,
+        u2_0.longitude,
+        u2_0.nome,
+        u2_0.notif_email,
+        u2_0.notif_sms,
+        u2_0.telefone,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao 
+    from
+        USUARIO_AREA u1_0 
+    join
+        USUARIO u2_0 
+            on u2_0.id_usuario=u1_0.id_usuario 
+    where
+        u1_0.id_area=?
+2025-06-01 15:38:32.163 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0
+2025-06-01 15:38:46.305 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:38:50.876 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao,
+        u1_0.email,
+        u1_0.latitude,
+        u1_0.longitude,
+        u1_0.nome,
+        u1_0.notif_email,
+        u1_0.notif_sms,
+        u1_0.telefone 
+    from
+        USUARIO u1_0 
+    where
+        u1_0.id_usuario=?
+2025-06-01 15:38:50.892 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0 
+    where
+        ar1_0.id_area=?
+2025-06-01 15:38:50.908 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.id_usuario,
+        a1_0.id_area,
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao 
+    from
+        USUARIO_AREA a1_0 
+    join
+        AREA_RISCO ar1_0 
+            on ar1_0.id_area=a1_0.id_area 
+    where
+        a1_0.id_usuario=?
+2025-06-01 15:38:50.924 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_area,
+        u1_0.id_usuario,
+        u2_0.id_usuario,
+        u2_0.data_atualizacao,
+        u2_0.data_criacao,
+        u2_0.email,
+        u2_0.latitude,
+        u2_0.longitude,
+        u2_0.nome,
+        u2_0.notif_email,
+        u2_0.notif_sms,
+        u2_0.telefone,
+        u1_0.data_atualizacao,
+        u1_0.data_criacao 
+    from
+        USUARIO_AREA u1_0 
+    join
+        USUARIO u2_0 
+            on u2_0.id_usuario=u1_0.id_usuario 
+    where
+        u1_0.id_area=?
+2025-06-01 15:39:02.063 [main] DEBUG org.hibernate.SQL - 
+    select
+        ar1_0.id_area,
+        ar1_0.data_atualizacao,
+        ar1_0.data_criacao,
+        ar1_0.historico_alteracoes,
+        ar1_0.latitude,
+        ar1_0.longitude,
+        ar1_0.nivel_risco,
+        ar1_0.nome 
+    from
+        AREA_RISCO ar1_0
+2025-06-01 15:39:09.121 [main] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.cod_tipo,
+        te1_0.data_atualizacao,
+        te1_0.data_criacao,
+        te1_0.descricao 
+    from
+        TIPO_EVENTO te1_0
+2025-06-01 15:39:41.719 [main] ERROR com.gs.Main - Erro ao criar alerta: No enum constant com.gs.model.Alerta.Severidade.3
+java.lang.IllegalArgumentException: No enum constant com.gs.model.Alerta.Severidade.3
+	at java.base/java.lang.Enum.valueOf(Enum.java:293)
+	at com.gs.model.Alerta$Severidade.valueOf(Alerta.java:57)
+	at com.gs.Main.criarAlerta(Main.java:491)
+	at com.gs.Main.menuAlertas(Main.java:167)
+	at com.gs.Main.processarOpcao(Main.java:60)
+	at com.gs.Main.main(Main.java:24)
+2025-06-01 15:39:54.050 [main] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.id_alerta,
+        a1_0.id_area,
+        a1_0.data_atualizacao,
+        a1_0.data_criacao,
+        a1_0.data_hora,
+        a1_0.descricao,
+        a1_0.orientacao_populacao,
+        a1_0.severidade,
+        a1_0.status,
+        a1_0.cod_tipo 
+    from
+        ALERTA a1_0
+2025-06-01 15:40:17.955 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_area_risco.nextval 
+    from
+        dual
+2025-06-01 15:40:17.976 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_area_risco.nextval 
+    from
+        dual
+2025-06-01 15:40:17.997 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_area_risco.nextval 
+    from
+        dual
+2025-06-01 15:40:18.015 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_usuario.nextval 
+    from
+        dual
+2025-06-01 15:40:18.070 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_usuario.nextval 
+    from
+        dual
+2025-06-01 15:40:18.093 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_usuario.nextval 
+    from
+        dual
+2025-06-01 15:40:18.112 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_alerta.nextval 
+    from
+        dual
+2025-06-01 15:40:18.143 [main] DEBUG org.hibernate.SQL - 
+    select
+        seq_alerta.nextval 
+    from
+        dual
+2025-06-01 15:40:18.228 [main] DEBUG org.hibernate.SQL - 
+    select
+        null,
+        ua1_0.data_atualizacao,
+        ua1_0.data_criacao 
+    from
+        USUARIO_AREA ua1_0 
+    where
+        ua1_0.id_area=? 
+        and ua1_0.id_usuario=?
+2025-06-01 15:40:18.249 [main] DEBUG org.hibernate.SQL - 
+    select
+        null,
+        ua1_0.data_atualizacao,
+        ua1_0.data_criacao 
+    from
+        USUARIO_AREA ua1_0 
+    where
+        ua1_0.id_area=? 
+        and ua1_0.id_usuario=?
+2025-06-01 15:40:18.276 [main] DEBUG org.hibernate.SQL - 
+    select
+        null,
+        ua1_0.data_atualizacao,
+        ua1_0.data_criacao 
+    from
+        USUARIO_AREA ua1_0 
+    where
+        ua1_0.id_area=? 
+        and ua1_0.id_usuario=?
+2025-06-01 15:40:18.284 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:40:18.291 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:40:18.299 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:40:18.307 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:40:18.314 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        TIPO_EVENTO
+        (data_atualizacao, data_criacao, descricao, cod_tipo) 
+    values
+        (?, ?, ?, ?)
+2025-06-01 15:40:18.324 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        AREA_RISCO
+        (data_atualizacao, data_criacao, historico_alteracoes, latitude, longitude, nivel_risco, nome, id_area) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.331 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        AREA_RISCO
+        (data_atualizacao, data_criacao, historico_alteracoes, latitude, longitude, nivel_risco, nome, id_area) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.339 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        AREA_RISCO
+        (data_atualizacao, data_criacao, historico_alteracoes, latitude, longitude, nivel_risco, nome, id_area) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.347 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        USUARIO
+        (data_atualizacao, data_criacao, email, latitude, longitude, nome, notif_email, notif_sms, telefone, id_usuario) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.357 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        USUARIO
+        (data_atualizacao, data_criacao, email, latitude, longitude, nome, notif_email, notif_sms, telefone, id_usuario) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.363 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        USUARIO
+        (data_atualizacao, data_criacao, email, latitude, longitude, nome, notif_email, notif_sms, telefone, id_usuario) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.371 [main] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        ALERTA
+        (id_area, data_atualizacao, data_criacao, data_hora, descricao, orientacao_populacao, severidade, status, cod_tipo, id_alerta) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-06-01 15:40:18.411 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 4098, SQLState: 42000
+2025-06-01 15:40:18.411 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ORA-04098: gatilho 'RM552776.TRG_AUDIT_ALERTA' é inválido e a revalidação falhou
+
+2025-06-01 15:40:18.422 [main] ERROR com.gs.Main - Erro ao popular dados iniciais: could not execute statement [ORA-04098: gatilho 'RM552776.TRG_AUDIT_ALERTA' é inválido e a revalidação falhou
+] [insert into ALERTA (id_area,data_atualizacao,data_criacao,data_hora,descricao,orientacao_populacao,severidade,status,cod_tipo,id_alerta) values (?,?,?,?,?,?,?,?,?,?)]
+org.hibernate.exception.SQLGrammarException: could not execute statement [ORA-04098: gatilho 'RM552776.TRG_AUDIT_ALERTA' é inválido e a revalidação falhou
+] [insert into ALERTA (id_area,data_atualizacao,data_criacao,data_hora,descricao,orientacao_populacao,severidade,status,cod_tipo,id_alerta) values (?,?,?,?,?,?,?,?,?,?)]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:108)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:40)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:52)
+	at org.hibernate.persister.entity.mutation.InsertCoordinator.doStaticInserts(InsertCoordinator.java:175)
+	at org.hibernate.persister.entity.mutation.InsertCoordinator.coordinateInsert(InsertCoordinator.java:113)
+	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:2873)
+	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:104)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:632)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:499)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:363)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:41)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1403)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:484)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2319)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1976)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at com.gs.Main.popularDadosIniciais(Main.java:277)
+	at com.gs.Main.processarOpcao(Main.java:62)
+	at com.gs.Main.main(Main.java:24)
+Caused by: java.sql.SQLSyntaxErrorException: ORA-04098: gatilho 'RM552776.TRG_AUDIT_ALERTA' é inválido e a revalidação falhou
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:630)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:564)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1151)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:771)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:299)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:152)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1052)
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1531)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1311)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3746)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeLargeUpdate(OraclePreparedStatement.java:3918)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:3897)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:992)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 23 common frames omitted
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-04098: gatilho 'RM552776.TRG_AUDIT_ALERTA' é inválido e a revalidação falhou
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:637)
+	... 37 common frames omitted
+2025-06-01 16:16:13.122 [main] INFO  com.gs.util.HibernateUtil - Iniciando configuração do Hibernate...
+2025-06-01 16:16:13.179 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-01 16:16:13.202 [main] WARN  org.hibernate.orm.deprecation - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2025-06-01 16:16:13.372 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-01 16:16:13.467 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-06-01 16:16:13.579 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: oracle.jdbc.OracleDriver
+2025-06-01 16:16:13.579 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL]
+2025-06-01 16:16:13.579 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=rm552776}
+2025-06-01 16:16:13.579 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-06-01 16:16:13.581 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-06-01 16:16:14.569 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2025-06-01 16:16:15.142 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-01 16:16:15.171 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7cdfa824] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-06-01 16:16:31.054 [main] INFO  com.gs.util.HibernateUtil - SessionFactory criada com sucesso!

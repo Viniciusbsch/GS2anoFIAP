@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Configuração do console -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Desabilita logs específicos do Hibernate -->
+    <logger name="org.hibernate" level="OFF"/>
+    <logger name="org.hibernate.SQL" level="OFF"/>
+    <logger name="org.hibernate.type.descriptor.sql" level="OFF"/>
+    <logger name="org.hibernate.orm" level="OFF"/>
+    <logger name="org.hibernate.validator" level="OFF"/>
+
+    <!-- Desabilita todos os logs -->
+    <root level="OFF">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration> 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configurações de conexão com o banco de dados -->
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL</property>
+        <property name="hibernate.connection.username">rm552776</property>
+        <property name="hibernate.connection.password">Fiap#2025</property>
+
+        <!-- Configurações básicas -->
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+        <property name="hibernate.connection.pool_size">10</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Mapeamento das classes de entidade -->
+        <mapping class="com.gs.model.Usuario"/>
+        <mapping class="com.gs.model.AreaRisco"/>
+        <mapping class="com.gs.model.TipoEvento"/>
+        <mapping class="com.gs.model.Alerta"/>
+        <mapping class="com.gs.model.AuditoriaAlerta"/>
+        <mapping class="com.gs.model.UsuarioArea"/>
+        <mapping class="com.gs.model.AreaTipoEvento"/>
+    </session-factory>
+</hibernate-configuration> 

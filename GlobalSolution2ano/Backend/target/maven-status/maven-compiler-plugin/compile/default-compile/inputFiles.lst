@@ -1,0 +1,14 @@
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\exception\BusinessException.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\Main.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\Alerta.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\AreaRisco.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\AreaTipoEvento.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\AreaTipoEventoId.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\AuditoriaAlerta.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\TipoEvento.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\Usuario.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\UsuarioArea.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\model\UsuarioAreaId.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\service\AlertaService.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\service\AreaRiscoService.java
+D:\Engenharia Software\GlobalSolution2ano\Backend\src\main\java\com\gs\util\HibernateUtil.java

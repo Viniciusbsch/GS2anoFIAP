@@ -1,0 +1,15 @@
+com\gs\Main.class
+com\gs\model\Usuario.class
+com\gs\model\AreaRisco.class
+com\gs\model\AreaTipoEventoId.class
+com\gs\model\UsuarioArea.class
+com\gs\service\AlertaService.class
+com\gs\exception\BusinessException.class
+com\gs\util\HibernateUtil.class
+com\gs\model\AreaTipoEvento.class
+com\gs\model\Alerta$Severidade.class
+com\gs\model\AuditoriaAlerta.class
+com\gs\model\Alerta.class
+com\gs\model\TipoEvento.class
+com\gs\model\UsuarioAreaId.class
+com\gs\service\AreaRiscoService.class
