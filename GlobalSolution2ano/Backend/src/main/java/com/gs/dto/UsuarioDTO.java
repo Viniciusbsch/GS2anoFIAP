@@ -9,6 +9,7 @@ public class UsuarioDTO {
     private double longitude;
     private boolean notifEmail;
     private boolean notifSms;
+    private AreaRiscoDTO areaRisco;
 
     // Getters and Setters
     public int getId() {
@@ -73,5 +74,13 @@ public class UsuarioDTO {
 
     public void setNotifSms(boolean notifSms) {
         this.notifSms = notifSms;
+    }
+
+    public AreaRiscoDTO getAreaRisco() {
+        return areaRisco;
+    }
+
+    public void setAreaRisco(AreaRiscoDTO areaRisco) {
+        this.areaRisco = areaRisco;
     }
 } 

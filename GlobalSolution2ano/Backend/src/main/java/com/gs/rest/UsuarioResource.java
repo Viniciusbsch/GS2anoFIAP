@@ -2,7 +2,9 @@ package com.gs.rest;
 
 import com.gs.dao.UsuarioDao;
 import com.gs.dto.UsuarioDTO;
+import com.gs.dto.AreaRiscoDTO;
 import com.gs.model.Usuario;
+import com.gs.model.AreaRisco;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -25,6 +27,18 @@ public class UsuarioResource {
         if (usuario == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
+
+        // Buscar a AreaRisco completa antes de converter para DTO
+        if (usuario.getAreaRisco() != null) {
+            jakarta.persistence.EntityManager em = com.gs.util.HibernateUtil.getSessionFactory().createEntityManager();
+            try {
+                AreaRisco areaRisco = em.find(AreaRisco.class, usuario.getAreaRisco().getId());
+                usuario.setAreaRisco(areaRisco);
+            } finally {
+                em.close();
+            }
+        }
+
         UsuarioDTO usuarioDTO = convertToDTO(usuario);
         return Response.ok(usuarioDTO).build();
     }
@@ -36,6 +50,18 @@ public class UsuarioResource {
         if (usuario == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
+
+        // Buscar a AreaRisco completa antes de converter para DTO
+        if (usuario.getAreaRisco() != null) {
+            jakarta.persistence.EntityManager em = com.gs.util.HibernateUtil.getSessionFactory().createEntityManager();
+            try {
+                AreaRisco areaRisco = em.find(AreaRisco.class, usuario.getAreaRisco().getId());
+                usuario.setAreaRisco(areaRisco);
+            } finally {
+                em.close();
+            }
+        }
+
         UsuarioDTO usuarioDTO = convertToDTO(usuario);
         return Response.ok(usuarioDTO).build();
     }
@@ -52,6 +78,17 @@ public class UsuarioResource {
             usuario.setLongitude(0.0);
             usuario.setNotifEmail(true);
             usuario.setNotifSms(false);
+
+            // Buscar a entidade AreaRisco do banco antes de associar
+            if (usuarioDTO.getAreaRisco() != null) {
+                jakarta.persistence.EntityManager em = com.gs.util.HibernateUtil.getSessionFactory().createEntityManager();
+                try {
+                    AreaRisco areaRisco = em.find(AreaRisco.class, usuarioDTO.getAreaRisco().getId());
+                    usuario.setAreaRisco(areaRisco);
+                } finally {
+                    em.close();
+                }
+            }
 
             usuarioDao.save(usuario);
             
@@ -73,6 +110,15 @@ public class UsuarioResource {
         dto.setLongitude(usuario.getLongitude());
         dto.setNotifEmail(usuario.getNotifEmail());
         dto.setNotifSms(usuario.getNotifSms());
+        
+        if (usuario.getAreaRisco() != null) {
+            AreaRiscoDTO areaDTO = new AreaRiscoDTO();
+            areaDTO.setId(usuario.getAreaRisco().getId());
+            areaDTO.setNome(usuario.getAreaRisco().getNome());
+            areaDTO.setNivelRisco(usuario.getAreaRisco().getNivelRisco());
+            dto.setAreaRisco(areaDTO);
+        }
+        
         return dto;
     }
 } 

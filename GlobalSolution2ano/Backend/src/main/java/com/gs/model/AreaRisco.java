@@ -43,11 +43,11 @@ public class AreaRisco {
     @OneToMany(mappedBy = "areaRisco", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<AreaTipoEvento> tiposEvento = new HashSet<>();
 
-    @OneToMany(mappedBy = "areaRisco", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UsuarioArea> usuarios = new HashSet<>();
-
     @OneToMany(mappedBy = "areaRisco", cascade = CascadeType.ALL)
     private Set<Alerta> alertas = new HashSet<>();
+
+    @OneToMany(mappedBy = "areaRisco")
+    private Set<Usuario> usuarios = new HashSet<>();
 
     @CreationTimestamp
     @Column(name = "data_criacao", updatable = false)
@@ -114,20 +114,20 @@ public class AreaRisco {
         this.tiposEvento = tiposEvento;
     }
 
-    public Set<UsuarioArea> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Set<UsuarioArea> usuarios) {
-        this.usuarios = usuarios;
-    }
-
     public Set<Alerta> getAlertas() {
         return alertas;
     }
 
     public void setAlertas(Set<Alerta> alertas) {
         this.alertas = alertas;
+    }
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public LocalDateTime getDataCriacao() {
@@ -152,15 +152,13 @@ public class AreaRisco {
     }
 
     public void adicionarUsuario(Usuario usuario) {
-        UsuarioArea usuarioArea = new UsuarioArea(usuario, this);
-        usuarios.add(usuarioArea);
-        usuario.getAreas().add(usuarioArea);
+        usuarios.add(usuario);
+        usuario.setAreaRisco(this);
     }
 
     public void removerUsuario(Usuario usuario) {
-        UsuarioArea usuarioArea = new UsuarioArea(usuario, this);
-        usuarios.remove(usuarioArea);
-        usuario.getAreas().remove(usuarioArea);
+        usuarios.remove(usuario);
+        usuario.setAreaRisco(null);
     }
 
     @Override

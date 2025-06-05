@@ -8,9 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "USUARIO")
@@ -46,8 +43,9 @@ public class Usuario {
     @Column(name = "notif_sms", nullable = false)
     private Boolean notifSms = false;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UsuarioArea> areas = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_area_risco")
+    private AreaRisco areaRisco;
 
     @CreationTimestamp
     @Column(name = "data_criacao", updatable = false)
@@ -135,12 +133,12 @@ public class Usuario {
         this.notifSms = notifSms;
     }
 
-    public Set<UsuarioArea> getAreas() {
-        return areas;
+    public AreaRisco getAreaRisco() {
+        return areaRisco;
     }
 
-    public void setAreas(Set<UsuarioArea> areas) {
-        this.areas = areas;
+    public void setAreaRisco(AreaRisco areaRisco) {
+        this.areaRisco = areaRisco;
     }
 
     public LocalDateTime getDataCriacao() {
@@ -161,7 +159,7 @@ public class Usuario {
             Telefone: %s
             Latitude: %s
             Longitude: %s
-            Áreas de Risco: %s
+            Área de Risco: %s
             Notificação por E-mail: %s
             Notificação por SMS: %s
             
@@ -172,9 +170,7 @@ public class Usuario {
             telefone,
             latitude != null ? latitude.toString() : "Nenhum",
             longitude != null ? longitude.toString() : "Nenhum",
-            areas.isEmpty() ? "Nenhuma" : areas.stream()
-                .map(ua -> ua.getAreaRisco().getNome())
-                .collect(Collectors.joining(", ")),
+            areaRisco != null ? areaRisco.getNome() : "Nenhuma",
             notifEmail ? "Sim" : "Não", 
             notifSms ? "Sim" : "Não");
     }

@@ -533,9 +533,7 @@ public class Main {
 
             if (usuario != null && area != null) {
                 tx.begin();
-                UsuarioArea usuarioArea = new UsuarioArea(usuario, area);
-                usuario.getAreas().add(usuarioArea);
-                em.persist(usuarioArea);
+                area.adicionarUsuario(usuario);
                 em.merge(usuario);
                 tx.commit();
                 System.out.println("Usuário associado à área com sucesso!");
@@ -566,20 +564,14 @@ public class Main {
             Usuario usuario = em.find(Usuario.class, idUsuario);
 
             if (usuario != null) {
-                listarAreasRisco();
-                System.out.print("Digite o ID da área a ser desassociada: ");
-                Long idArea = Long.parseLong(scanner.nextLine());
-
-                AreaRisco area = em.find(AreaRisco.class, idArea);
-
-                if (area != null) {
+                if (usuario.getAreaRisco() != null) {
                     tx.begin();
-                    usuario.getAreas().removeIf(ua -> ua.getAreaRisco().getId().equals(idArea));
+                    usuario.getAreaRisco().removerUsuario(usuario);
                     em.merge(usuario);
                     tx.commit();
                     System.out.println("Usuário desassociado da área com sucesso!");
                 } else {
-                    System.out.println("Área não encontrada!");
+                    System.out.println("Usuário não está associado a nenhuma área!");
                 }
             } else {
                 System.out.println("Usuário não encontrado!");
