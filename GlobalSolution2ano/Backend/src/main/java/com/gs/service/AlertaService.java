@@ -14,6 +14,53 @@ import java.util.List;
 
 public class AlertaService {
     
+    public Alerta criarAlerta(Long idArea, String tipoEvento, String descricao, int nivelSeveridade) {
+        EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        
+        try {
+            // Buscar área e tipo de evento
+            AreaRisco area = em.find(AreaRisco.class, idArea);
+            if (area == null) {
+                throw new BusinessException("Área não encontrada");
+            }
+
+            TypedQuery<TipoEvento> query = em.createQuery(
+                "SELECT t FROM TipoEvento t WHERE t.descricao = :descricao", TipoEvento.class);
+            query.setParameter("descricao", tipoEvento);
+            TipoEvento tipo = query.getSingleResult();
+
+            // Converter nível de severidade para enum
+            Alerta.Severidade severidade;
+            switch (nivelSeveridade) {
+                case 1 -> severidade = Alerta.Severidade.BAIXO;
+                case 2 -> severidade = Alerta.Severidade.MÉDIO;
+                case 3 -> severidade = Alerta.Severidade.ALTO;
+                case 4 -> severidade = Alerta.Severidade.ALTÍSSIMO;
+                case 5 -> severidade = Alerta.Severidade.CALAMIDADE;
+                default -> throw new BusinessException("Nível de severidade inválido");
+            }
+
+            // Criar orientação padrão baseada na severidade
+            String orientacao = "Orientações para " + tipoEvento + " de nível " + nivelSeveridade;
+
+            Alerta alerta = new Alerta(area, tipo, LocalDateTime.now(), severidade, descricao, orientacao);
+            
+            tx.begin();
+            em.persist(alerta);
+            tx.commit();
+            
+            return alerta;
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            throw new BusinessException("Erro ao criar alerta", e);
+        } finally {
+            em.close();
+        }
+    }
+    
     public Alerta criarAlerta(AreaRisco area, TipoEvento tipo, Alerta.Severidade severidade, 
                             String descricao, String orientacao) {
         EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
