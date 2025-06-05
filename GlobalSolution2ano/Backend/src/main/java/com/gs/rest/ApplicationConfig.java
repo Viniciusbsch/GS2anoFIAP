@@ -1,5 +1,7 @@
 package com.gs.rest;
 
+import com.gs.controller.AreaRiscoController;
+import com.gs.filter.CORSFilter;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
@@ -12,6 +14,8 @@ public class ApplicationConfig extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new HashSet<>();
         resources.add(HelloResource.class);
+        resources.add(AreaRiscoController.class);
+        resources.add(CORSFilter.class);
         return resources;
     }
 } 

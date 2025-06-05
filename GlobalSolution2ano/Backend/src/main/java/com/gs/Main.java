@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -198,47 +197,25 @@ public class Main {
         try {
             // Listar áreas disponíveis
             System.out.println("\nÁreas disponíveis: ");
-            List<AreaRisco> areas = areaRiscoService.listarAreas();
-            areas.forEach(area -> System.out.println(area.getId() + " - " + area.getNome()));
-
-            System.out.print("ID da área: ");
+            listarAreasRisco();
+            System.out.print("Digite o ID da área: ");
             Long idArea = Long.parseLong(scanner.nextLine());
-            AreaRisco area = areas.stream()
-                .filter(a -> a.getId().equals(idArea))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Área não encontrada"));
 
-            // Listar tipos de evento disponíveis
-            System.out.println("\nTipos de evento disponíveis:");
-            TypedQuery<TipoEvento> queryTipo = em.createQuery("SELECT t FROM TipoEvento t", TipoEvento.class);
-            List<TipoEvento> tipos = queryTipo.getResultList();
-            tipos.forEach(tipo -> System.out.println(tipo.getCodigo() + " - " + tipo.getDescricao()));
+            System.out.print("Tipo de evento (ex: Chuva, Vento, etc.): ");
+            String tipoEvento = scanner.nextLine();
 
-            System.out.print("Nome do tipo de evento: (exemplo: TEMPO, INUNDAÇÃO, DESLIZAMENTO, etc.) ");
-            String codTipo = scanner.nextLine();
-            TipoEvento tipo = tipos.stream()
-                .filter(t -> t.getCodigo().equals(codTipo))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Tipo de evento não encontrado"));
-
-            System.out.print("Severidade (BAIXO/MÉDIO/ALTO/ALTÍSSIMO/CALAMIDADE): (descrever exatamento o nivel de severidade)  ");
-            String severidadeStr = scanner.nextLine();
-            Alerta.Severidade severidade = Alerta.Severidade.valueOf(severidadeStr);
-
-            System.out.print("Descrição: (exemplo: quando este evento se torna perigoso) ");
+            System.out.print("Descrição do alerta: ");
             String descricao = scanner.nextLine();
 
-            System.out.print("Orientação à população: (exemplo: Evacuar área imediatamente, Manter-se em local seguro e evitar áreas baixas, etc.) ");
-            String orientacao = scanner.nextLine();
+            System.out.print("Nível de severidade (1-5): ");
+            int nivelSeveridade = Integer.parseInt(scanner.nextLine());
 
-            alertaService.criarAlerta(area, tipo, severidade, descricao, orientacao);
+            alertaService.criarAlerta(idArea, tipoEvento, descricao, nivelSeveridade);
             System.out.println("Alerta criado com sucesso!");
         } catch (NumberFormatException e) {
-            System.out.println("Erro: Digite apenas números para o ID da área.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            System.out.println("Erro: Digite apenas números para ID e nível de severidade.");
         } catch (Exception e) {
-            System.out.println("Erro: Não foi possível criar o alerta. Verifique se todos os dados estão corretos.");
+            System.out.println("Erro: Não foi possível criar o alerta. Verifique se os dados estão corretos.");
         }
     }
 
@@ -267,25 +244,25 @@ public class Main {
 
             AreaRisco area = em.find(AreaRisco.class, id);
             if (area != null) {
-                System.out.print("Novo nome da área/região/bairro: ");
+                System.out.print("Novo nome da área: ");
                 area.setNome(scanner.nextLine());
 
-                System.out.print("Novo nível de risco, enumerar de 1 a 5: ");
+                System.out.print("Novo nível de risco (1-5): ");
                 area.setNivelRisco(Integer.parseInt(scanner.nextLine()));
 
-                System.out.print("Nova latitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
+                System.out.print("Nova latitude: ");
                 area.setLatitude(Double.parseDouble(scanner.nextLine()));
 
-                System.out.print("Nova longitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
+                System.out.print("Nova longitude: ");
                 area.setLongitude(Double.parseDouble(scanner.nextLine()));
 
                 tx.begin();
                 em.merge(area);
                 tx.commit();
 
-                System.out.println("\nÁrea atualizada com sucesso!");
+                System.out.println("Área atualizada com sucesso!");
             } else {
-                System.out.println("\nÁrea não encontrada!");
+                System.out.println("Área não encontrada!");
             }
         } catch (NumberFormatException e) {
             System.out.println("Erro: Digite apenas números para ID, nível de risco, latitude e longitude.");
@@ -293,7 +270,7 @@ public class Main {
             if (tx.isActive()) {
                 tx.rollback();
             }
-            System.out.println("Erro: Não foi possível atualizar a área. Verifique os dados informados.");
+            System.out.println("Erro: Não foi possível atualizar a área. Tente novamente.");
         } finally {
             em.close();
         }
@@ -305,7 +282,7 @@ public class Main {
 
         try {
             listarAreasRisco();
-            System.out.print("\nDigite o ID da área a ser removida: ");
+            System.out.print("Digite o ID da área a ser removida: ");
             Long id = Long.parseLong(scanner.nextLine());
 
             AreaRisco area = em.find(AreaRisco.class, id);
@@ -323,7 +300,7 @@ public class Main {
             if (tx.isActive()) {
                 tx.rollback();
             }
-            System.out.println("Erro: Não foi possível remover a área. Verifique se ela não está sendo usada em alertas.");
+            System.out.println("Erro: Não foi possível remover a área. Tente novamente.");
         } finally {
             em.close();
         }
@@ -340,28 +317,31 @@ public class Main {
 
             Alerta alerta = em.find(Alerta.class, id);
             if (alerta != null) {
-                System.out.print("Nova severidade (BAIXO/MÉDIO/ALTO/ALTÍSSIMO/CALAMIDADE): (descrever exatamento o nivel de severidade) ");
-                String severidadeStr = scanner.nextLine();
-                alerta.setSeveridade(Alerta.Severidade.valueOf(severidadeStr));
+                System.out.print("Nova descrição do alerta: ");
+                String descricao = scanner.nextLine();
 
-                System.out.print("Nova descrição: (exemplo: quando este evento se torna perigoso) ");
-                alerta.setDescricao(scanner.nextLine());
+                System.out.print("Novo nível de severidade (1-5): ");
+                int nivelSeveridade = Integer.parseInt(scanner.nextLine());
+                Alerta.Severidade severidade;
+                switch (nivelSeveridade) {
+                    case 1 -> severidade = Alerta.Severidade.BAIXO;
+                    case 2 -> severidade = Alerta.Severidade.MÉDIO;
+                    case 3 -> severidade = Alerta.Severidade.ALTO;
+                    case 4 -> severidade = Alerta.Severidade.ALTÍSSIMO;
+                    case 5 -> severidade = Alerta.Severidade.CALAMIDADE;
+                    default -> throw new IllegalArgumentException("Nível de severidade inválido");
+                }
 
-                System.out.print("Nova orientação à população: (exemplo: Evacuar área imediatamente, Manter-se em local seguro e evitar áreas baixas, etc.) ");
-                alerta.setOrientacaoPopulacao(scanner.nextLine());
+                System.out.print("Nova orientação à população: ");
+                String orientacao = scanner.nextLine();
 
-                tx.begin();
-                em.merge(alerta);
-                tx.commit();
-
+                alertaService.atualizarAlerta(id, severidade, descricao, orientacao);
                 System.out.println("Alerta atualizado com sucesso!");
             } else {
                 System.out.println("Alerta não encontrado!");
             }
         } catch (NumberFormatException e) {
-            System.out.println("Erro: Digite apenas números para o ID do alerta.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro: Severidade inválida. Use apenas: BAIXO, MÉDIO, ALTO, ALTÍSSIMO ou CALAMIDADE.");
+            System.out.println("Erro: Digite apenas números para ID e nível de severidade.");
         } catch (Exception e) {
             if (tx.isActive()) {
                 tx.rollback();
@@ -417,27 +397,19 @@ public class Main {
             System.out.print("Telefone: (exemplo: 55 11 99999-9999) ");
             String telefone = scanner.nextLine();
 
-            System.out.print("Latitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
-            double latitude = Double.parseDouble(scanner.nextLine());
-
-            System.out.print("Longitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
-            double longitude = Double.parseDouble(scanner.nextLine());
-
             System.out.print("Notificar por email? (S/N): ");
             boolean notifEmail = scanner.nextLine().equalsIgnoreCase("S");
 
             System.out.print("Notificar por SMS? (S/N): ");
             boolean notifSms = scanner.nextLine().equalsIgnoreCase("S");
 
-            Usuario usuario = new Usuario(nome, email, telefone, latitude, longitude, notifEmail, notifSms);
+            Usuario usuario = new Usuario(nome, email, telefone, notifEmail, notifSms);
 
             tx.begin();
             em.persist(usuario);
             tx.commit();
 
             System.out.println("Usuário cadastrado com sucesso!");
-        } catch (NumberFormatException e) {
-            System.out.println("Erro: Digite apenas números para latitude e longitude.");
         } catch (Exception e) {
             if (tx.isActive()) {
                 tx.rollback();
@@ -487,12 +459,6 @@ public class Main {
                 System.out.print("Novo telefone: (exemplo: 55 11 99999-9999) ");
                 usuario.setTelefone(scanner.nextLine());
 
-                System.out.print("Nova latitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
-                usuario.setLatitude(Double.parseDouble(scanner.nextLine()));
-
-                System.out.print("Nova longitude: (sequência de 6 a 15 digitos pelo sistema decimal podendo ser positivo ou negativo) ");
-                usuario.setLongitude(Double.parseDouble(scanner.nextLine()));
-
                 System.out.print("Notificar por email? (S/N): ");
                 usuario.setNotifEmail(scanner.nextLine().equalsIgnoreCase("S"));
 
@@ -508,7 +474,7 @@ public class Main {
                 System.out.println("Usuário não encontrado!");
             }
         } catch (NumberFormatException e) {
-            System.out.println("Erro: Digite apenas números para ID, latitude e longitude.");
+            System.out.println("Erro: Digite apenas números para ID.");
         } catch (Exception e) {
             if (tx.isActive()) {
                 tx.rollback();
@@ -567,19 +533,12 @@ public class Main {
 
             if (usuario != null && area != null) {
                 tx.begin();
-                
-                // Verifica se a associação já existe
-                boolean jaAssociado = usuario.getAreas().stream()
-                    .anyMatch(ua -> ua.getAreaRisco().getId().equals(area.getId()));
-                
-                if (jaAssociado) {
-                    System.out.println("Usuário já está associado a esta área!");
-                } else {
-                    usuario.adicionarArea(area);
-                    em.merge(usuario);
-                    tx.commit();
-                    System.out.println("Usuário associado à área com sucesso!");
-                }
+                UsuarioArea usuarioArea = new UsuarioArea(usuario, area);
+                usuario.getAreas().add(usuarioArea);
+                em.persist(usuarioArea);
+                em.merge(usuario);
+                tx.commit();
+                System.out.println("Usuário associado à área com sucesso!");
             } else {
                 System.out.println("Usuário ou área não encontrados!");
             }
@@ -590,7 +549,6 @@ public class Main {
                 tx.rollback();
             }
             System.out.println("Erro: Não foi possível associar o usuário à área. Tente novamente.");
-            e.printStackTrace();
         } finally {
             em.close();
         }
@@ -605,21 +563,26 @@ public class Main {
             System.out.print("Digite o ID do usuário: ");
             Long idUsuario = Long.parseLong(scanner.nextLine());
 
-            listarAreasRisco();
-            System.out.print("Digite o ID da área a ser desassociada: ");
-            Long idArea = Long.parseLong(scanner.nextLine());
-
             Usuario usuario = em.find(Usuario.class, idUsuario);
-            AreaRisco area = em.find(AreaRisco.class, idArea);
 
-            if (usuario != null && area != null) {
-                tx.begin();
-                usuario.removerArea(area);
-                em.merge(usuario);
-                tx.commit();
-                System.out.println("Usuário desassociado da área com sucesso!");
+            if (usuario != null) {
+                listarAreasRisco();
+                System.out.print("Digite o ID da área a ser desassociada: ");
+                Long idArea = Long.parseLong(scanner.nextLine());
+
+                AreaRisco area = em.find(AreaRisco.class, idArea);
+
+                if (area != null) {
+                    tx.begin();
+                    usuario.getAreas().removeIf(ua -> ua.getAreaRisco().getId().equals(idArea));
+                    em.merge(usuario);
+                    tx.commit();
+                    System.out.println("Usuário desassociado da área com sucesso!");
+                } else {
+                    System.out.println("Área não encontrada!");
+                }
             } else {
-                System.out.println("Usuário ou área não encontrados!");
+                System.out.println("Usuário não encontrado!");
             }
         } catch (NumberFormatException e) {
             System.out.println("Erro: Digite apenas números para os IDs.");

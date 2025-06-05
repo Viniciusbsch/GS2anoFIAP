@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "USUARIO")
@@ -61,13 +62,10 @@ public class Usuario {
     }
 
     // Construtor com parâmetros
-    public Usuario(String nome, String email, String telefone, Double latitude, Double longitude,
-                  Boolean notifEmail, Boolean notifSms) {
+    public Usuario(String nome, String email, String telefone, Boolean notifEmail, Boolean notifSms) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.notifEmail = notifEmail;
         this.notifSms = notifSms;
     }
@@ -153,19 +151,6 @@ public class Usuario {
         return dataAtualizacao;
     }
 
-    // Métodos auxiliares
-    public void adicionarArea(AreaRisco area) {
-        UsuarioArea usuarioArea = new UsuarioArea(this, area);
-        areas.add(usuarioArea);
-        area.getUsuarios().add(usuarioArea);
-    }
-
-    public void removerArea(AreaRisco area) {
-        UsuarioArea usuarioArea = new UsuarioArea(this, area);
-        areas.remove(usuarioArea);
-        area.getUsuarios().remove(usuarioArea);
-    }
-
     @Override
     public String toString() {
         return String.format("""
@@ -174,7 +159,9 @@ public class Usuario {
             Nome: %s
             E-mail: %s
             Telefone: %s
-            Localização: %.6f, %.6f
+            Latitude: %s
+            Longitude: %s
+            Áreas de Risco: %s
             Notificação por E-mail: %s
             Notificação por SMS: %s
             
@@ -183,8 +170,11 @@ public class Usuario {
             nome, 
             email, 
             telefone,
-            latitude,
-            longitude,
+            latitude != null ? latitude.toString() : "Nenhum",
+            longitude != null ? longitude.toString() : "Nenhum",
+            areas.isEmpty() ? "Nenhuma" : areas.stream()
+                .map(ua -> ua.getAreaRisco().getNome())
+                .collect(Collectors.joining(", ")),
             notifEmail ? "Sim" : "Não", 
             notifSms ? "Sim" : "Não");
     }

@@ -9,10 +9,11 @@ import java.net.URI;
 
 public class Server {
 
-    private static final String BASE_URI = "http://localhost:8080/";
+    private static final String BASE_URI = "http://localhost:8081/";
 
     public static HttpServer startServer() {
-        final ResourceConfig rc = new ResourceConfig().packages("com.gs.rest");
+        final ResourceConfig rc = new ResourceConfig()
+            .packages("com.gs.controller", "com.gs.rest", "com.gs.filter");
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
     }
 
